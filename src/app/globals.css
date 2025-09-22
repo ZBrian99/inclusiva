@@ -17,8 +17,9 @@
 	--breakpoint-xl: 1280px;
 	--breakpoint-2xl: 1536px;
 
-	--primary: #8b5cf6;
-	--primary-700: #6d28d9;
+	--primary: #4c1d95;
+	--primary-300: #85198f;
+	--primary-700: #2b0f79;
 
 	--red: #e72e2e;
 	--red-700: #b91c1c;
@@ -40,9 +41,11 @@
 	--yellow-700: #d6951c;
 	--yellow-300: #fde68a;
 
-	--brown: #854527;
-	--orange-700: #c2410c;
-	--orange-300: #fdba74;
+	--violet: #5b21b6;
+	--violet-700: #4c1d95;
+	--violet-500: #5b21b6;
+	--violet-400: #6125c2;
+	--violet-300: #7c3aed;
 
 	--orange: #f97316;
 	--orange-700: #c2410c;
@@ -88,7 +91,7 @@
 }
 .gradient-navbar {
 	background-color: #4c1d95;
-	background-image: linear-gradient(to right, #4c1d95, rgba(134, 25, 143, 0.9));
+	background-image: linear-gradient(to right, #4c1d95, #85198f);
 }
 
 .gradient-cta {
@@ -167,6 +170,14 @@
 	--tile-fg: var(--black);
 }
 
+.tile-violet-dark {
+	--tile-base: var(--violet-700);
+}
+.tile-violet-light {
+	--tile-base: var(--violet-300);
+	--tile-fg: var(--black);
+}
+
 .tile-yellow-dark {
 	--tile-base: var(--yellow-700);
 }
@@ -214,8 +225,8 @@
 .tile-orange {
 	--tile-base: var(--orange);
 }
-.tile-brown {
-	--tile-base: var(--brown);
+.tile-violet {
+	--tile-base: var(--violet);
 }
 .tile-green {
 	--tile-base: var(--green);
