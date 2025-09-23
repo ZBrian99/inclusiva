@@ -9,7 +9,8 @@ export default function NotFound() {
   useEffect(() => {
     // Redirección inmediata
     if (typeof window !== 'undefined' && window.history.length > 1) {
-      router.back()
+      // router.back()
+      router.push('/')
     } else {
       router.push('/')
     }

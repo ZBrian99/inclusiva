@@ -1,9 +1,8 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
-:root {
-	--background: var(--white);
-	--foreground: #171717;
-}
+/* Single-theme (dark) setup */
+/* No light/dark switching anymore */
 
 @theme {
 	--font-sans: var(--font-inter-sans), system-ui, -apple-system, sans-serif;
@@ -76,172 +75,356 @@
 	--black: #080808;
 }
 
+:root {
+	--red: #ef4444;
+	--pink: #ec4899;
+	--blue: #3b82f6;
+	--cyan: #22d3ee;
+	--amber: #f59e0b;
+	--orange: #f97316;
+	--green: #22c55e;
+	--teal: #10b981;
+	--violet: #7c3aed;
+	--indigo: #6366f1;
+	--purple: #8b5cf6;
+	--fuchsia: #d946ef;
+	--lilac: #b388ff;
+	--lilac-700: #7d5bd1;
+	--gray: #9e9e9e;
+	--slate-600: #475569;
+	--slate-700: #334155;
+	--slate-800: #182336;
+	--slate-900: #0f172a;
+	--radius: 0.625rem;
+
+	/* Dark palette now as default tokens */
+	--background: var(--slate-900);
+	--foreground: oklch(0.985 0 0);
+	--card: var(--slate-800);
+	--card-foreground: oklch(0.985 0 0);
+	--popover: oklch(0.205 0 0);
+	--popover-foreground: oklch(0.985 0 0);
+	--primary: oklch(0.922 0 0);
+	--primary-foreground: oklch(0.205 0 0);
+	--secondary: oklch(0.269 0 0);
+	--secondary-foreground: oklch(0.985 0 0);
+	--muted: oklch(0.269 0 0);
+	--muted-foreground: oklch(0.708 0 0);
+	--accent: oklch(0.269 0 0);
+	--accent-foreground: oklch(0.985 0 0);
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.556 0 0);
+	--chart-1: oklch(0.488 0.243 264.376);
+	--chart-2: oklch(0.696 0.17 162.48);
+	--chart-3: oklch(0.769 0.188 70.08);
+	--chart-4: oklch(0.627 0.265 303.9);
+	--chart-5: oklch(0.645 0.246 16.439);
+	--sidebar: oklch(0.205 0 0);
+	--sidebar-foreground: oklch(0.985 0 0);
+	--sidebar-primary: oklch(0.488 0.243 264.376);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.269 0 0);
+	--sidebar-accent-foreground: oklch(0.985 0 0);
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.556 0 0);
+}
+
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
-	--font-sans: var(--font-sans);
-	--font-serif: var(--font-serif);
+	--color-sidebar-ring: var(--sidebar-ring);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar: var(--sidebar);
+	--color-chart-5: var(--chart-5);
+	--color-chart-4: var(--chart-4);
+	--color-chart-3: var(--chart-3);
+	--color-chart-2: var(--chart-2);
+	--color-chart-1: var(--chart-1);
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--color-destructive: var(--destructive);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-accent: var(--accent);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary: var(--secondary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--color-card-foreground: var(--card-foreground);
+	--color-card: var(--card);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: var(--white);
-	}
-}
+
+
+/* Header and accents grounded on tokens */
 .gradient-navbar {
-	background-color: #4c1d95;
-	background-image: linear-gradient(to right, #4c1d95, #85198f);
+	background-color: var(--color-slate-950);
+	/* background-image: url('https://image.pollinations.ai/prompt/geometric%20lines%20tech%20pattern%20dark?width=600&height=200&seed=101&model=flux-realism&nologo=true'),
+		linear-gradient(135deg, var(--slate-700) 0%, var(--slate-800) 50%, var(--slate-500) 100%); */
+	/* background-size: cover, cover; */
+	/* background-blend-mode: soft-light; */
+	color: var(--foreground);
 }
 
 .gradient-cta {
-	background-color: var(--orange);
-	background-image: linear-gradient(135deg, var(--orange), var(--pink));
-}
-.btn-cta {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.375rem;
-	color: white;
-	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
-	transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
-	backdrop-filter: saturate(120%) blur(2px);
-}
-.btn-cta:hover {
-	transform: translateY(-1px);
-	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-}
-.btn-cta:active {
-	transform: translateY(0);
-	filter: saturate(0.95);
-}
-.btn-cta:focus-visible {
-	outline: none;
-	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9), 0 0 0 5px rgba(139, 92, 246, 0.6);
+	background-color: #fcd34d;
+	background-image: linear-gradient(135deg, rgb(255, 168, 7) 0%, hsl(32, 94%, 56%) 50%, #f54418 100%);
+	color: #fff;
+	position: relative;
 }
 
-.hover-sheen::after {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: radial-gradient(1200px 300px at var(--x, 50%) -20%, rgba(255, 255, 255, 0.15), transparent 60%);
-	opacity: 0;
-	transition: opacity 300ms ease;
-}
-.hover-sheen:hover::after {
-	opacity: 1;
+.gradient-heart {
+	background-color: #f59e0b;
+	background-image: linear-gradient(135deg, #fcd34d, #f5690b);
+	color: #fff;
 }
 
-.tile {
-	background-color: var(--tile-base, #555);
-	background-image: linear-gradient(
-		135deg,
-		color-mix(in srgb, var(--tile-base, #555) 92%, white 8%),
-		color-mix(in srgb, var(--tile-base, #555) 85%, black 15%)
-	);
-	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-	color: var(--tile-fg, #fff);
+.gradient-brand-text {
+	background-color: #f1f5f9;
+	background-image: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
 
-.tile-red-dark {
-	--tile-base: var(--red-700);
-}
-.tile-red-light {
-	--tile-base: var(--red-300);
-	--tile-fg: var(--black);
-}
-
-.tile-pink-dark {
-	--tile-base: var(--pink-700);
-}
-.tile-pink-light {
-	--tile-base: var(--pink-300);
-	--tile-fg: var(--black);
+.gradient-cta-violet {
+	/* background-color: #8b5cf6;
+	background-image: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%); */
+  background-color: #f1f5f9;
+	background-image: linear-gradient(135deg, #a02424, #238f88, #1e768a, #378a63, #be902a, #963e8a, #2b5d9b);
+	color: #fff;
+	position: relative;
 }
 
-.tile-blue-dark {
-	--tile-base: var(--blue-700);
-}
-.tile-sky {
-	--tile-base: var(--sky);
-}
-.tile-blue-light {
-	--tile-base: var(--blue-300);
-	--tile-fg: var(--black);
+/* Utility class to hide horizontal scrollbars */
+.hide-scrollbar-x {
+	overflow-x: auto;
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
-.tile-violet-dark {
-	--tile-base: var(--violet-700);
-}
-.tile-violet-light {
-	--tile-base: var(--violet-300);
-	--tile-fg: var(--black);
+.hide-scrollbar-x::-webkit-scrollbar {
+	display: none; /* WebKit browsers (Chrome, Safari, Edge) */
 }
 
-.tile-yellow-dark {
-	--tile-base: var(--yellow-700);
+.bg-grad-red {
+	background-color: #7f1d1d;
+	background-image: linear-gradient(145deg, #b91c1c 0%, #991b1b 50%, #450a0a 100%);
+	color: #fef2f2;
 }
-.tile-yellow-light {
-	--tile-base: var(--yellow-300);
-	--tile-fg: var(--black);
+.bg-grad-red:hover {
+	background-image: linear-gradient(145deg, #dc2626 0%, #b91c1c 50%, #7f1d1d 100%);
+	transform: none;
+}
+.bg-grad-pink {
+	background-color: #831863;
+	background-image: linear-gradient(160deg, #be187e 0%, #9d1765 40%, #61083f 100%);
+	color: #fdf2f8;
+}
+.bg-grad-pink:hover {
+	background-image: linear-gradient(160deg, #ec48bb 0%, #be1879 40%, #9d1775 100%);
+	transform: none;
+}
+.bg-grad-blue {
+	background-color: #1e3a8a;
+	background-image: linear-gradient(130deg, #1d4ed8 0%, #1e40af 35%, #172554 100%);
+	color: #eff6ff;
+}
+.bg-grad-blue:hover {
+	background-image: linear-gradient(130deg, #3b82f6 0%, #1d4ed8 35%, #1e40af 100%);
+	transform: none;
+}
+.bg-grad-orange {
+	background-color: #c2410c;
+	background-image: linear-gradient(155deg, #ea580c 0%, #d97706 45%, #9a3412 100%);
+	color: #fff7ed;
+}
+.bg-grad-orange:hover {
+	background-image: linear-gradient(155deg, #f97316 0%, #ea580c 45%, #d97706 100%);
+	transform: none;
+}
+.bg-grad-green {
+	background-color: #14532d;
+	background-image: linear-gradient(140deg, #15803d 0%, #166534 40%, #052e16 100%);
+	color: #f0fdf4;
+}
+.bg-grad-green:hover {
+	background-image: linear-gradient(140deg, #22c55e 0%, #15803d 40%, #166534 100%);
+	transform: none;
+}
+.bg-grad-violet {
+	background-color: #4c1d95;
+	background-image: linear-gradient(150deg, #6d28d9 0%, #5b21b6 30%, #240c52 100%);
+	color: #f5f3ff;
+}
+.bg-grad-violet:hover {
+	background-image: linear-gradient(150deg, #8b5cf6 0%, #6d28d9 30%, #5b21b6 100%);
+	transform: none;
+}
+.bg-grad-gray {
+	background-color: #1e293b;
+	background-image: linear-gradient(125deg, #334155 0%, #1e293b 35%, #131d35 100%);
+	color: #f8fafc;
+}
+.bg-grad-gray:hover {
+	background-image: linear-gradient(125deg, #64748b 0%, #475569 35%, #334155 100%);
+	transform: none;
 }
 
-.tile-orange-dark {
-	--tile-base: var(--orange-700);
+.category-overlay-red {
+	background-color: #7f1d1d;
+	background-image: linear-gradient(135deg, #b91c1c, #7f1d1d);
 }
-.tile-orange-light {
-	--tile-base: var(--orange-300);
-	--tile-fg: var(--black);
+.category-overlay-pink {
+	background-color: #831843;
+	background-image: linear-gradient(135deg, #be185d, #831843);
 }
-
-.tile-green-dark {
-	--tile-base: var(--green-700);
+.category-overlay-blue {
+	background-color: #1e3a8a;
+	background-image: linear-gradient(135deg, #1d4ed8, #1e3a8a);
 }
-.tile-green-light {
-	--tile-base: var(--green-300);
-	--tile-fg: var(--black);
+.category-overlay-orange {
+	background-color: #c2410c;
+	background-image: linear-gradient(135deg, #ea580c, #c2410c);
 }
-
-.tile-lilac-dark {
-	--tile-base: var(--lilac-700);
+.category-overlay-green {
+	background-color: #14532d;
+	background-image: linear-gradient(135deg, #15803d, #14532d);
 }
-.tile-lilac-light {
-	--tile-base: var(--lilac-300);
-	--tile-fg: var(--black);
+.category-overlay-violet {
+	background-color: #4c1d95;
+	background-image: linear-gradient(135deg, #6d28d9, #4c1d95);
 }
-
-.tile-red {
-	--tile-base: var(--red);
-}
-.tile-pink {
-	--tile-base: var(--pink);
-}
-.tile-blue {
-	--tile-base: var(--blue);
-}
-.tile-yellow {
-	--tile-base: var(--yellow);
-}
-.tile-orange {
-	--tile-base: var(--orange);
-}
-.tile-violet {
-	--tile-base: var(--violet);
-}
-.tile-green {
-	--tile-base: var(--green);
-}
-.tile-lilac {
-	--tile-base: var(--lilac);
-}
-.tile-gray {
-	--tile-base: var(--gray);
+.category-overlay-gray {
+	background-color: var(--slate-700);
+	background-image: linear-gradient(135deg, var(--slate-600), var(--slate-800));
 }
 
-body {
-	@apply bg-background text-foreground min-h-[100svh] antialiased;
-	font-family: var(--font-inter-sans), system-ui, -apple-system, sans-serif;
-}
+
+
 .font-display {
 	font-family: var(--font-poppins), var(--font-inter-sans), system-ui;
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+  body[data-scroll-locked] {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    overflow: visible !important;
+  }
+	body {
+    @apply bg-background text-foreground min-h-[100svh] antialiased relative;
+    font-family: var(--font-inter-sans), system-ui, -apple-system, sans-serif;
+  
+  }
+  button {
+    @apply cursor-pointer
+  }
+}
+
+/* Elementos decorativos de fondo para tiles - Imágenes AI generadas */
+.tile-decoration {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	overflow: hidden;
+	border-radius: inherit;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	mix-blend-mode: overlay;
+}
+
+/* Eventos - Patrones abstractos festivos */
+.decoration-events {
+	background-image: url('https://image.pollinations.ai/prompt/abstract%20ribbons%20confetti%20celebration?width=400&height=300&seed=42&model=flux-realism&nologo=true');
+	opacity: 0.3;
+}
+
+/* Pedidos - Patrones de conexión abstractos */
+.decoration-requests {
+	background-image: url('https://image.pollinations.ai/prompt/network%20dots%20connections%20web?width=400&height=300&seed=43&model=flux-realism&nologo=true');
+	opacity: 0.3;
+}
+
+/* Servicios - Patrones técnicos abstractos */
+.decoration-services {
+	background-image: url('https://image.pollinations.ai/prompt/geometric%20crystal%20facets%20modern%20structure?width=400&height=300&seed=44&model=flux-realism&nologo=true');
+	opacity: 0.3;
+}
+
+/* Productos - Patrones geométricos organizados */
+.decoration-products {
+	background-image: url('https://image.pollinations.ai/prompt/honeycomb%20hexagon%20grid%20pattern?width=400&height=300&seed=45&model=flux-realism&nologo=true');
+	opacity: 0.3;
+}
+
+/* Cursos - Flujos de conocimiento abstractos */
+.decoration-courses {
+	background-image: url('https://image.pollinations.ai/prompt/flowing%20waves%20neural%20streams?width=400&height=300&seed=46&model=flux-realism&nologo=true');
+	opacity: 0.3;
+}
+
+/* Usados - Patrones circulares de renovación */
+.decoration-used {
+	background-image: url('https://image.pollinations.ai/prompt/scattered%20circles%20triangles%20stars%20simple%20shapes%20floating%20darker?width=400&height=300&seed=47&model=flux-realism&nologo=true');
+	opacity: 0.3;
+}
+
+/* Todos - Mosaico abstracto diverso */
+.decoration-all {
+	background-image: url('https://image.pollinations.ai/prompt/random%20dots%20lines%20polygons%20minimal%20scattered%20elements?width=400&height=300&seed=48&model=flux-realism&nologo=true');
+	opacity: 0.3;
+}
+
+/* Card hover glow: borde se ilumina sin mover la tarjeta */
+/* Utilidad para glow de borde en hover (sin translate) */
+.card-hover-glow {
+	box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+	transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover-glow:hover {
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 8px 22px -8px rgba(0, 0, 0, 0.55);
+}
+
+/* Chips de información extra en slate */
+.info-chip {
+	@apply inline-flex items-center gap-1 rounded-md bg-slate-800/60 px-2 py-1 text-[11px] text-slate-300 ring-1 ring-slate-600/40;
+}
+.info-chip .icon {
+	@apply text-slate-400;
+}
+
+/* Jerarquía de texto en slate */
+.slate-title {
+	@apply text-slate-100;
+}
+.slate-subtitle {
+	@apply text-slate-300;
+}
+.slate-meta {
+	@apply text-slate-400;
+}
+
+/* Asegurar que clases viejas no hagan translate */
+.bg-grad-gray:hover {
+	transform: none;
 }

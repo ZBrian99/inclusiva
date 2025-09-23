@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { Toaster } from 'sonner';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { CategoryProvider } from '@/contexts/CategoryContext';
 
 const poppins = Poppins({
 	weight: ['300', '400', '500', '600', '700'],
@@ -27,7 +32,19 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='es'>
-			<body className={`${inter.variable} ${poppins.variable}`}>{children}</body>
+			<body className={`${inter.variable} ${poppins.variable}`}>
+				<CategoryProvider>
+					<TooltipProvider delayDuration={200}>
+						<Header />
+            <div className='mt-20'>
+
+						{children}
+            </div>
+						<Footer />
+					</TooltipProvider>
+					<Toaster theme='dark' />
+				</CategoryProvider>
+			</body>
 		</html>
 	);
 }

@@ -1,60 +1,54 @@
-const WPP_NUMBER = '5492236032601';
+import { FaWhatsapp, FaHeart, FaUsers, FaQuestionCircle } from 'react-icons/fa';
 
-const Footer = () => {
-  // .footer {
-  //   margin-top: 48px;
-  //   text-align: center;
-  //   padding: 24px;
-  //   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  // }
-
-  // .footer-content {
-  //   font-size: 13px;
-  //   color: #6b7280;
-  //   line-height: 1.6;
-  // }
-
-  // .footer a {
-  //   color: #8b5cf6;
-  //   text-decoration: none;
-  //   font-weight: 500;
-  //   transition: color 0.3s ease;
-  // }
-
-  // .footer a:hover {
-  //   color: #a855f7;
-  // }
+export default function Footer() {
 	return (
-		<>
-			<footer className='text-center mt-2 pt-4 pb-2 border-t border-gray-900/95'>
-				<div className='text-sm text-gray-500 leading-relaxed'>
-					Desarrollado con ❤️ por Evelyn Castellano
-					<br />
-					<a href='#' className='text-purple-500 font-medium no-underline transition-colors hover:text-purple-400'>
-						Contacto
-					</a>{' '}
-					•{' '}
-					<a href='#' className='text-purple-500 font-medium no-underline transition-colors hover:text-purple-400'>
-						Acerca de
-					</a>{' '}
-					•{' '}
-					<a href='#' className='text-purple-500 font-medium no-underline transition-colors hover:text-purple-400'>
-						Comunidad
+		<footer className='border-t border-border/50 bg-card bottom-0 mt-auto'>
+			<div className='container mx-auto px-3 py-6'>
+				<div className='flex flex-col items-center justify-between gap-4'>
+					{/* Enlaces principales */}
+					<div className='flex items-center gap-6 text-sm'>
+						<a
+							href='https://wa.me/5492236032601'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='flex items-center gap-2 text-muted-foreground hover:text-green-500 transition-colors duration-300'
+						>
+							<FaWhatsapp className='w-4 h-4' />
+							Contacto
+						</a>
+
+						<a
+							href='/guia'
+							className='flex items-center gap-2 text-muted-foreground hover:text-violet-500 transition-colors duration-300'
+						>
+							<FaQuestionCircle className='w-4 h-4' />
+							Guía de uso
+						</a>
+
+						<a
+							href='https://wa.me/5492236032601'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='flex items-center gap-2 text-muted-foreground hover:text-blue-500 transition-colors duration-300'
+						>
+							<FaUsers className='w-4 h-4' />
+							Comunidad
+						</a>
+					</div>
+
+					{/* Copyright */}
+					<a
+						href='https://wa.me/5492236032601'
+						target='_blank'
+						rel='noopener noreferrer'
+						className='flex items-center gap-2 text-xs text-muted-foreground hover:text-gray-200 transition-colors duration-300 group'
+					>
+						<span>Desarrollado con </span>
+						<FaHeart className='w-4 h-4 text-red-500 group-hover:scale-110 transition-transform duration-300' />
+						<span> por Evelyn Castellano</span>
 					</a>
 				</div>
-			</footer>
-			{/* <footer className='shrink-0 text-center text-xs text-gray-600 dark:text-gray-400'>
-				Desarrollado con ❤️ por Evelyn Castellano •{' '}
-				<a
-					href={`https://wa.me/${WPP_NUMBER}`}
-					target='_blank'
-					rel='noopener noreferrer'
-					className='underline underline-offset-2 hover:text-green-600'
-				>
-					Contacto
-				</a>
-			</footer> */}
-		</>
+			</div>
+		</footer>
 	);
-};
-export default Footer;
+}

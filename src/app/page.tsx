@@ -4,10 +4,9 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
 	return (
-		<main className='mx-auto max-w-5xl p-6 flex flex-col gap-6'>
-			<Header />
+			<main className='mx-auto max-w-5xl p-6 flex flex-col gap-6'>
+			{/* <Header /> */}
 			<BentoGrid />
-			<Footer />
-		</main>
+			</main>
 	);
 }

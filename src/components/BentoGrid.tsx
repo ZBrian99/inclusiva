@@ -1,62 +1,83 @@
+'use client';
+
 import { FaCalendarAlt, FaSearch, FaTools, FaStore, FaExchangeAlt, FaGraduationCap, FaBoxOpen } from 'react-icons/fa';
 import Tile from './Tile';
+import { useCategory } from '@/contexts/CategoryContext';
+import { useRouter } from 'next/navigation';
 
 export default function BentoGrid() {
+	const { setSelectedCategory } = useCategory();
+	const router = useRouter();
+
+	const handleCategoryClick = (
+		category: 'eventos' | 'pedidos' | 'servicios' | 'productos' | 'cursos' | 'usados' | 'all'
+	) => {
+		setSelectedCategory(category);
+		router.push('/publicaciones');
+	};
+
 	return (
-		<section className='grid grid-cols-1 gap-3 us:grid-cols-6 lg:gap-6 sm:grid-cols-12 lg:grid-rows-12 flex-1 min-h-[calc(100svh-9.5rem)]'>
-			<Tile
-				href='/publicaciones/eventos'
-				className='col-span-1 us:col-span-3 tile-red lg:col-start-1 lg:col-span-4 lg:row-start-1 lg:row-span-3'
+		<section className='grid grid-cols-1 gap-4 us:grid-cols-6 sm:gap-6 sm:grid-cols-12 sm:grid-rows-12 flex-1 min-h-[calc(100svh-8rem)]'>
+			<button
+				onClick={() => handleCategoryClick('eventos')}
+				className='col-span-1 us:col-span-3 bg-grad-red sm:col-start-1 sm:col-span-4 sm:row-start-1 sm:row-span-3  overflow-hidden relative z-20 flex flex-col items-center justify-center text-center rounded-2xl p-4 md:p-5 lg:p-6 transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 shadow-sm'
 			>
-				<FaCalendarAlt size={28} className='drop-shadow' />
-				<span className='text-lg font-semibold drop-shadow'>Eventos</span>
-			</Tile>
+				<div className='tile-decoration decoration-events'></div>
+				<FaCalendarAlt size={28} className='drop-shadow relative z-10' />
+				<span className='text-lg font-semibold drop-shadow relative z-10 mt-1'>Eventos</span>
+			</button>
 
-			<Tile
-				href='/publicaciones/pedidos'
-				className='col-span-1 us:col-span-3 tile-pink lg:col-start-9 lg:col-span-5 lg:row-start-1 lg:row-span-3'
+			<button
+				onClick={() => handleCategoryClick('pedidos')}
+				className='col-span-1 us:col-span-3 bg-grad-pink sm:col-start-9 sm:col-span-5 sm:row-start-1 sm:row-span-3  overflow-hidden relative z-20 flex flex-col items-center justify-center text-center rounded-2xl p-4 md:p-5 lg:p-6 transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 shadow-sm'
 			>
-				<FaSearch size={28} className='drop-shadow' />
-				<span className='text-lg font-semibold drop-shadow'>Pedidos</span>
-			</Tile>
+				<div className='tile-decoration decoration-requests'></div>
+				<FaSearch size={28} className='drop-shadow relative z-10' />
+				<span className='text-lg font-semibold drop-shadow relative z-10 mt-1'>Pedidos</span>
+			</button>
 
-			<Tile
-				href='/publicaciones/servicios'
-				className='col-span-1 us:col-span-3  tile-blue lg:col-start-1 lg:col-span-4 lg:row-start-4 lg:row-span-6'
+			<button
+				onClick={() => handleCategoryClick('servicios')}
+				className='col-span-1 us:col-span-3 bg-grad-blue sm:col-start-1 sm:col-span-4 sm:row-start-4 sm:row-span-6  overflow-hidden relative z-20 flex flex-col items-center justify-center text-center rounded-2xl p-4 md:p-5 lg:p-6 transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 shadow-sm'
 			>
-				<FaTools size={28} className='drop-shadow' />
-				<span className='text-lg font-semibold drop-shadow'>Servicios</span>
-			</Tile>
+				<div className='tile-decoration decoration-services'></div>
+				<FaTools size={28} className='drop-shadow relative z-10' />
+				<span className='text-lg font-semibold drop-shadow relative z-10 mt-1'>Servicios</span>
+			</button>
 
-			<Tile
-				href='/publicaciones/productos'
-				className='col-span-1 us:col-span-3 tile-orange lg:col-start-5 lg:col-span-4 lg:row-start-1 lg:row-span-8'
+			<button
+				onClick={() => handleCategoryClick('productos')}
+				className='col-span-1 us:col-span-3 bg-grad-orange sm:col-start-5 sm:col-span-4 sm:row-start-1 sm:row-span-8  overflow-hidden relative z-20 flex flex-col items-center justify-center text-center rounded-2xl p-4 md:p-5 lg:p-6 transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 shadow-sm'
 			>
-				<FaStore size={28} className='drop-shadow' />
-				<span className='text-lg font-semibold drop-shadow'>Productos</span>
-			</Tile>
-			<Tile
-				href='/publicaciones/cursos'
-				className='col-span-1 us:col-span-3 tile-green-dark lg:col-start-1 lg:col-span-4 lg:row-start-10 lg:row-span-3'
+				<div className='tile-decoration decoration-products'></div>
+				<FaStore size={28} className='drop-shadow relative z-10' />
+				<span className='text-lg font-semibold drop-shadow relative z-10 mt-1'>Productos</span>
+			</button>
+			<button
+				onClick={() => handleCategoryClick('cursos')}
+				className='col-span-1 us:col-span-3 bg-grad-green sm:col-start-1 sm:col-span-4 sm:row-start-10 sm:row-span-3  overflow-hidden relative z-20 flex flex-col items-center justify-center text-center rounded-2xl p-4 md:p-5 lg:p-6 transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 shadow-sm'
 			>
-				<FaGraduationCap size={28} className='drop-shadow' />
-				<span className='text-lg font-semibold drop-shadow'>Cursos</span>
-			</Tile>
-			<Tile
-				href='/publicaciones/usados'
-				className='col-span-1 us:col-span-3 tile-violet lg:col-start-9 lg:col-span-5 lg:row-start-4 lg:row-span-5'
+				<div className='tile-decoration decoration-courses'></div>
+				<FaGraduationCap size={28} className='drop-shadow relative z-10' />
+				<span className='text-lg font-semibold drop-shadow relative z-10 mt-1'>Cursos</span>
+			</button>
+			<button
+				onClick={() => handleCategoryClick('usados')}
+				className='col-span-1 us:col-span-3 bg-grad-violet sm:col-start-9 sm:col-span-5 sm:row-start-4 sm:row-span-5  overflow-hidden relative z-20 flex flex-col items-center justify-center text-center rounded-2xl p-4 md:p-5 lg:p-6 transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 shadow-sm'
 			>
-				<FaExchangeAlt size={28} className='drop-shadow' />
-				<span className='text-lg font-semibold drop-shadow'>Usados</span>
-			</Tile>
+				<div className='tile-decoration decoration-used'></div>
+				<FaExchangeAlt size={28} className='drop-shadow relative z-10' />
+				<span className='text-lg font-semibold drop-shadow relative z-10 mt-1'>Usados</span>
+			</button>
 
-			<Tile
-				href='/publicaciones'
-				className='col-span-1 us:col-span-6 tile-gray-dark sm:col-start-6 lg:col-span-9 lg:row-start-9 lg:row-span-4'
+			<button
+				onClick={() => handleCategoryClick('all')}
+				className='col-span-1 us:col-span-6 bg-grad-gray  sm:col-span-9 sm:row-start-9 sm:row-span-4 relative overflow-hidden  z-20 flex flex-col items-center justify-center text-center rounded-2xl p-4 md:p-5 lg:p-6 transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 shadow-sm'
 			>
-				<FaBoxOpen size={28} className='drop-shadow' />
-				<span className='text-lg font-semibold drop-shadow'>Todos</span>
-			</Tile>
+				<div className='tile-decoration decoration-all'></div>
+				<FaBoxOpen size={28} className='drop-shadow relative z-10' />
+				<span className='text-lg font-semibold drop-shadow relative z-10 mt-1'>Todos</span>
+			</button>
 		</section>
 	);
 }
