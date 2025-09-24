@@ -5,6 +5,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from 'sonner';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import FloatingActionButton from '@/components/FloatingActionButton';
 import { CategoryProvider } from '@/contexts/CategoryContext';
 
 const poppins = Poppins({
@@ -70,19 +71,17 @@ export default function RootLayout({
 	return (
 		<html lang='es'>
 			<head>
-				<link rel="manifest" href="/manifest.json" />
-				<meta name="apple-mobile-web-app-capable" content="yes" />
-				<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-				<meta name="apple-mobile-web-app-title" content="Inclusiva" />
+				<link rel='manifest' href='/manifest.json' />
+				<meta name='apple-mobile-web-app-capable' content='yes' />
+				<meta name='apple-mobile-web-app-status-bar-style' content='black' />
+				<meta name='apple-mobile-web-app-title' content='Inclusiva' />
 			</head>
 			<body className={`${inter.variable} ${poppins.variable}`}>
 				<CategoryProvider>
 					<TooltipProvider delayDuration={200}>
 						<Header />
-            <div className='mt-20'>
-
-						{children}
-            </div>
+						<div className='mt-20 '>{children}</div>
+						<FloatingActionButton />
 						<Footer />
 					</TooltipProvider>
 					<Toaster theme='dark' />

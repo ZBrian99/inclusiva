@@ -1,4 +1,19 @@
-import { FaHeart, FaUsers, FaGraduationCap, FaTools, FaStore, FaCalendarAlt, FaExchangeAlt, FaHandsHelping, FaComments, FaSearch, FaFilter, FaPlus, FaBoxOpen } from 'react-icons/fa';
+import Link from 'next/link';
+import {
+	FaHeart,
+	FaUsers,
+	FaGraduationCap,
+	FaTools,
+	FaStore,
+	FaCalendarAlt,
+	FaExchangeAlt,
+	FaHandsHelping,
+	FaComments,
+	FaSearch,
+	FaFilter,
+	FaPlus,
+	FaBoxOpen,
+} from 'react-icons/fa';
 
 export default function GuiaPage() {
 	return (
@@ -6,9 +21,6 @@ export default function GuiaPage() {
 			{/* Header */}
 			<div className='text-center mb-12'>
 				<div className='flex items-center justify-center gap-3 mb-4'>
-					<div className='bg-gradient-to-br from-pink-500 to-violet-600 p-3 rounded-xl'>
-						<FaHeart className='w-6 h-6 text-white' />
-					</div>
 					<h1 className='text-3xl sm:text-4xl font-bold bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent'>
 						Guía de Inclusiva
 					</h1>
@@ -21,9 +33,7 @@ export default function GuiaPage() {
 
 			{/* Bienvenida */}
 			<section className='bg-card/50 rounded-2xl p-6 mb-8 border border-border/50'>
-				<h2 className='text-2xl font-semibold mb-4 gap-2'>
-					¡Bienvenide a nuestra comunidad!
-				</h2>
+				<h2 className='text-2xl font-semibold mb-4 gap-2'>¡Bienvenide a nuestra comunidad!</h2>
 				<p className='text-muted-foreground mb-4'>
 					Inclusiva es más que una plataforma: es un hogar digital donde la diversidad se celebra y todas las voces
 					importan. Aquí podés encontrar personas afines, compartir experiencias, buscar apoyo y ofrecer el tuyo.
@@ -113,8 +123,8 @@ export default function GuiaPage() {
 							<div>
 								<h3 className='font-semibold mb-2'>1. Navegá por categorías</h3>
 								<p className='text-muted-foreground mb-3'>
-									En la página principal encontrás botones coloridos para cada categoría. Hacé clic en el que te interese
-									para ver todas las publicaciones de ese tipo.
+									En la página principal encontrás botones coloridos para cada categoría. Hacé clic en el que te
+									interese para ver todas las publicaciones de ese tipo.
 								</p>
 								<div className='bg-muted/50 rounded-lg p-3 text-sm'>
 									<strong>Tip:</strong> Cada categoría tiene su propio icono y color para facilitar la navegación
@@ -167,8 +177,15 @@ export default function GuiaPage() {
 							<div>
 								<h3 className='font-semibold mb-2'>4. Compartí tu contenido</h3>
 								<p className='text-muted-foreground mb-3'>
-									¿Tenés algo para ofrecer o necesitás ayuda? El boton Publicar te permite agregar una publicación. Cada aporte ayuda
-									a fortalecer la comunidad.
+                  ¿Querés crear una publicación o necesitás ayuda con algo?
+                  Usá el botón
+									<Link
+										href={'/publicaciones/new'}
+										className='bg-gradient-to-br from-pink-500 to-violet-600 p-2 rounded-full inline-flex items-center justify-center mx-2'
+									>
+										<FaPlus className='w-3 h-3 text-white inline' />
+									</Link>
+									flotante para crear una publicación. Cada aporte ayuda a fortalecer la comunidad.
 								</p>
 								<div className='bg-muted/50 rounded-lg p-3 text-sm'>
 									<strong>Recordá:</strong> Incluí fotos, descripción clara y datos de contacto
@@ -211,12 +228,12 @@ export default function GuiaPage() {
 					Inclusiva crece con vos. Si tenés ideas, sugerencias o encontraste algún problema, no dudes en contactarnos.
 					Cada feedback nos ayuda a ser mejores.
 				</p>
-				<div className='flex flex-col sm:flex-row gap-4 justify-center'>
+				<div className='flex flex-col items-center sm:flex-row gap-4 justify-center text-center'>
 					<a
 						href='https://wa.me/5492236032601'
 						target='_blank'
 						rel='noopener noreferrer'
-						className='inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-violet-600 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105'
+						className='inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-violet-600 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-center'
 					>
 						<FaComments className='w-4 h-4' />
 						Enviar feedback
@@ -225,7 +242,7 @@ export default function GuiaPage() {
 						href='https://wa.me/5492236032601'
 						target='_blank'
 						rel='noopener noreferrer'
-						className='inline-flex items-center gap-2 border border-border px-6 py-3 rounded-xl font-medium hover:bg-muted/50 transition-colors'
+						className='inline-flex items-center gap-2 border border-border px-6 py-3 rounded-xl font-medium hover:bg-muted/50 transition-colors text-center'
 					>
 						<FaUsers className='w-4 h-4' />
 						Unirse a la comunidad

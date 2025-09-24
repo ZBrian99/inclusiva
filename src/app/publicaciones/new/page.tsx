@@ -668,31 +668,29 @@ export default function NewPostPage() {
 	const methods = useForm<z.input<typeof postSchema>, any, z.output<typeof postSchema>>({
 		resolver: zodResolver(postSchema),
 		defaultValues: {
-			category: 'eventos',
-			title: 'Taller de Programación Web',
-			subtitle: 'Aprende a crear sitios web modernos',
-			description: 'Un taller completo donde aprenderás HTML, CSS, JavaScript y frameworks modernos. Ideal para principiantes que quieren adentrarse en el mundo del desarrollo web.',
-			image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop',
-			author: 'María González',
-			authorAvatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
-			location: 'Centro, Mar del Plata',
+			category: 'servicios',
+			title: 'Diseño gráfico y branding inclusivo',
+			subtitle: 'Identidad visual que representa tu diversidad',
+			description: 'Ofrezco servicios de diseño gráfico especializado en marcas inclusivas y diversas. Creo logotipos, identidad corporativa, material publicitario y diseño web que refleje los valores de inclusión y diversidad de tu proyecto o empresa.',
+			image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
+			author: 'Alex Martínez',
+			authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+			location: 'Güemes, Mar del Plata',
 			date: new Date().toISOString().split('T')[0],
-			price: 15000,
-			priceLabel: 'por persona',
-			tags: ['programación', 'web', 'principiantes'],
+			price: 25000,
+			priceLabel: 'desde',
+			tags: ['diseño', 'branding', 'inclusivo', 'lgbtq+'],
 			contact: {
-				instagram: '@mariagonzalez.dev',
-				whatsapp: '+54 9 11 1234-5678',
-				email: 'maria@ejemplo.com'
+				instagram: '@alex.design.inclusivo',
+				whatsapp: '+54 9 223 603-2601',
+				email: 'alex@disenoinclusivo.com'
 			},
-			payment: ['cash', 'transfer', 'mercadopago'],
-			startDate: new Date().toISOString().split('T')[0],
-			venue: 'Centro de Innovación Digital',
-			mode: 'presencial',
-			capacity: 20,
-			organizer: 'TechHub Buenos Aires',
+			payment: ['transfer', 'mercadopago', 'crypto'],
+			experienceYears: 5,
+			availability: 'Lun-Vie 10-18hs',
+			serviceArea: 'Mar del Plata y alrededores, también trabajo remoto',
 			urgent: false,
-			barterAccepted: false,
+			barterAccepted: true,
 		},
 		mode: 'onBlur',
 	});
@@ -733,9 +731,9 @@ export default function NewPostPage() {
 			console.log('Datos de la publicación:', postData);
 			
 			// Mostrar mensaje de confirmación
-			toast.success('¡Publicación creada exitosamente!', {
-				description: 'Tu publicación ya está disponible para que otros la vean.',
-				duration: 4000,
+      toast.success('¡Publicación creada exitosamente!', {
+				description: 'Tu publicación está siendo revisada por nuestro equipo y aparecerá en la lista una vez aprobada.',
+				duration: 10000,
 			});
 			
 			// Redirigir a /publicaciones con delay

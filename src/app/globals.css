@@ -428,3 +428,20 @@
 .bg-grad-gray:hover {
 	transform: none;
 }
+
+/* Hero Header Styles */
+.hero-gradient-text {
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+/* Hero Background Images */
+.hero-bg-abstract {
+  background-image: url("https://image.pollinations.ai/prompt/inclusive%20community%20gathering%20diverse%20people%20working%20together%20warm%20atmosphere%20natural%20lighting%20photorealistic?width=2000&height=800&model=flux-realism&enhance=true&nologo=true");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

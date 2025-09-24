@@ -44,7 +44,7 @@ export default function Footer() {
 						className='flex items-center gap-2 text-xs text-muted-foreground hover:text-gray-200 transition-colors duration-300 group'
 					>
 						<span>Desarrollado con </span>
-						<FaHeart className='w-4 h-4 text-red-500 group-hover:scale-110 transition-transform duration-300' />
+						<FaHeart className='w-4 h-4 text-violet-500 group-hover:scale-110 transition-transform duration-300' />
 						<span> por Evelyn Castellano</span>
 					</a>
 				</div>

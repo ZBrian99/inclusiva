@@ -304,7 +304,7 @@ function WizardNavigation({
 				<div className='flex justify-center'>
 					<Button
 						type='button'
-						variant='ghost'
+						variant='outline'
 						onClick={handleCancel}
 						disabled={isLoading}
 						className='text-muted-foreground hover:text-foreground'

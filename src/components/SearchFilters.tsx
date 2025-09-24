@@ -49,30 +49,21 @@ export default function SearchFilters({
 	resultsCount,
 }: SearchFiltersProps) {
 	return (
-		<div className='bg-card border border-border/50 rounded-2xl px-4 py-6 sm:px-6 sm:py-8 flex flex-col gap-4 shadow-lg'>
-			<header className='text-center space-y-3 mb-2'>
-				<h1 className='font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent'>
-					Publicaciones
-				</h1>
-				<p className='text-muted-foreground text-sm sm:text-base md:text-lg  max-w-2xl mx-auto'>
-					Descubrí eventos, servicios, productos y más de nuestra comunidad inclusiva
-				</p>
-			</header>
-
+		<div className=' py-6  sm:py-8 flex flex-col gap-6'>
 			{/* Search and Sort Row */}
 			<div className='flex flex-1 gap-4'>
 				<div className='relative w-full'>
 					<FaSearch className='absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground' size={16} />
 					<Input
 						value={searchQuery}
-						className='pl-10 h-12 text-sm '
+						className='pl-10 h-12 text-sm'
 						onChange={(e) => onSearchQueryChange(e.target.value)}
 						placeholder='Buscar por título, zona o etiquetas…'
 					/>
 				</div>
 
-				{/* Sort Select - Icon only */}
-				<Select  value={sortBy} onValueChange={(v) => onSortByChange(v as SortKey)}>
+				{/* Sort Select */}
+				<Select value={sortBy} onValueChange={(v) => onSortByChange(v as SortKey)}>
 					<SelectTrigger className='min-h-12'>
 						<FaSortAmountDown className='text-muted-foreground' size={16} />
 						<div className='hidden xs:block'>
@@ -95,8 +86,8 @@ export default function SearchFilters({
 						<Chip
 							selected={selected === 'all'}
 							onClick={() => onSelectedChange('all')}
-							className={` flex items-center gap-2.5 whitespace-nowrap relative overflow-hidden cursor-pointer   ${
-								selected === 'all' ? categoryGradients['all'] : ''
+							className={`flex items-center gap-2.5 whitespace-nowrap relative overflow-hidden cursor-pointer ${
+								selected === 'all' ? categoryGradients['all'] : 'border-border'
 							}`}
 						>
 							<div className='relative z-10 flex items-center gap-2.5 p-0.5'>
@@ -114,8 +105,8 @@ export default function SearchFilters({
 									key={category.key}
 									selected={isSelected}
 									onClick={() => onSelectedChange(category.key)}
-									className={`flex items-center gap-2.5 whitespace-nowrap relative overflow-hidden cursor-pointer  ${
-										isSelected ? categoryGradients[category.key] : ``
+									className={`flex items-center gap-2.5 whitespace-nowrap relative overflow-hidden cursor-pointer ${
+										isSelected ? categoryGradients[category.key] : 'border-border'
 									}`}
 								>
 									<div className='relative z-10 flex items-center gap-2.5 p-0.5'>
