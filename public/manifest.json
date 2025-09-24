@@ -1,0 +1,22 @@
+{
+  "name": "Inclusiva - Plataforma de Publicaciones Inclusivas",
+  "short_name": "Inclusiva",
+  "description": "Plataforma comunitaria para publicar y encontrar eventos, servicios, productos, cursos y más con enfoque inclusivo y diverso.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["social", "lifestyle", "business"],
+  "developer": {
+    "name": "Evelyn Castellano",
+    "url": "https://github.com/zbrian99"
+  }
+}
