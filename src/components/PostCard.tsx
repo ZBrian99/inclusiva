@@ -220,7 +220,7 @@ export default function PostCard({ post }: PostCardProps) {
 
 	return (
 		<Link href={`/publicaciones/${post.id}`} className="block">
-			<Card className='group overflow-hidden bg-card border border-border transition-shadow card-hover-glow hover:border-white/30 cursor-pointer'>
+			<Card className='group overflow-hidden bg-card border border-border transition-shadow card-hover-glow hover:border-white/30 cursor-pointer h-full'>
 			<div className='relative aspect-[16/10] '>
 				<Image src={post.image} alt={post.title} fill sizes='(max-width: 640px) 100vw, 33vw' className='object-cover' />
 				<div className='pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/60 via-black/40 to-transparent' />
