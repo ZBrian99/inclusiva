@@ -22,7 +22,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-	title: 'Inclusiva - Plataforma de Publicaciones Inclusivas',
+	title: 'Inclusiva',
 	description:
 		'Plataforma comunitaria para publicar y encontrar eventos, servicios, productos, cursos y más con enfoque inclusivo y diverso.',
 	keywords: [
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 	creator: 'Evelyn Castellano',
 	publisher: 'Inclusiva',
 	openGraph: {
-		title: 'Inclusiva - Plataforma de Publicaciones Inclusivas',
+		title: 'Inclusiva',
 		description:
 			'Plataforma comunitaria para publicar y encontrar eventos, servicios, productos, cursos y más con enfoque inclusivo y diverso.',
 		type: 'website',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Inclusiva - Plataforma de Publicaciones Inclusivas',
+		title: 'Inclusiva',
 		description:
 			'Plataforma comunitaria para publicar y encontrar eventos, servicios, productos, cursos y más con enfoque inclusivo y diverso.',
 	},
