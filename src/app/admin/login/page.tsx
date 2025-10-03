@@ -30,7 +30,15 @@ export default function AdminLoginPage() {
       const data = await res.json()
       localStorage.setItem('adminToken', data.token)
       toast.success('Sesión iniciada')
-      router.push('/admin/posts')
+      // Usar replace para evitar volver al login y asegurar SSR lee la cookie
+      router.replace('/admin/posts')
+      // En caso de que la navegación cliente no aplique la cookie a SSR, forzar recarga
+      // (fallback seguro en algunos navegadores/entornos)
+      setTimeout(() => {
+        if (typeof window !== 'undefined') {
+          window.location.assign('/admin/posts')
+        }
+      }, 0)
     } catch (err: any) {
       toast.error(err.message || 'Error de inicio de sesión')
     } finally {

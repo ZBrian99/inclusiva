@@ -44,6 +44,7 @@ export async function POST(req: NextRequest) {
       maxAge: expiresIn,
       path: '/',
       sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
     })
     return res
   } catch (err) {
