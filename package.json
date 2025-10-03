@@ -4,9 +4,9 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbopack",
-		"build": "next build --turbopack",
+		"build": "pnpm prisma:generate && next build --turbopack",
 		"start": "next start",
-		"preview": "next build && next start",
+		"preview": "pnpm prisma:generate && next build && next start",
 		"lint": "eslint",
 		"prisma:generate": "prisma generate",
 		"prisma:migrate": "prisma migrate dev",
