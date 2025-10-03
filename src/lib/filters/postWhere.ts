@@ -1,4 +1,4 @@
-import type { Prisma } from '@prisma/client';
+// Tipos de Prisma no disponibles en este entorno; usar tipos genéricos
 
 export type ListParams = {
 	q?: string;
@@ -17,8 +17,8 @@ function normalize(str: string) {
 		.replace(/[\u0300-\u036f]/g, '');
 }
 
-export function buildPostWhere(params: ListParams, opts?: { includeNonApproved?: boolean }): Prisma.PostWhereInput {
-	const where: Prisma.PostWhereInput = {};
+export function buildPostWhere(params: ListParams, opts?: { includeNonApproved?: boolean }): Record<string, any> {
+    const where: Record<string, any> = {};
 
 	// Status: by default only approved
 	if (!opts?.includeNonApproved) {
@@ -63,16 +63,16 @@ export function buildPostWhere(params: ListParams, opts?: { includeNonApproved?:
 
 export type SortKey = 'recent' | 'price_asc' | 'price_desc' | 'rating_desc';
 
-export function resolveOrderBy(sort?: SortKey): Prisma.PostOrderByWithRelationInput | Prisma.PostOrderByWithRelationInput[] {
-	switch (sort) {
-		case 'price_asc':
-			return { price: 'asc' };
-		case 'price_desc':
-			return { price: 'desc' };
-		case 'rating_desc':
-			return { rating: 'desc' };
-		case 'recent':
-		default:
-			return [{ status: 'asc' }, { createdAt: 'asc' }];
-	}
+export function resolveOrderBy(sort?: SortKey): Record<string, any> | Record<string, any>[] {
+    switch (sort) {
+        case 'price_asc':
+            return { price: 'asc' };
+        case 'price_desc':
+            return { price: 'desc' };
+        case 'rating_desc':
+            return { rating: 'desc' };
+        case 'recent':
+        default:
+            return [{ status: 'asc' }, { createdAt: 'asc' }];
+    }
 }
