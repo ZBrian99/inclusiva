@@ -7,6 +7,7 @@ export interface BasePost {
 	category: Category;
 	title: string;
 	subtitle?: string;
+	description?: string;
 	image: string;
 	author: string;
 	authorAvatar: string;
@@ -87,6 +88,7 @@ export const posts: Post[] = [
 		category: 'eventos',
 		title: 'Feria Diversa MDP',
 		subtitle: 'Emprendimientos locales, música y espacio seguro para todes',
+		description: 'Una feria única donde se muestran productos, servicios y eventos de manera inclusiva.',
 		image:
 			'https://image.pollinations.ai/prompt/Feria%20inclusiva%20en%20plaza%2C%20puestos%20de%20emprendedores%2C%20banderines%2C%20familias%2C%20tarde%20soleada%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20high%20quality%2C%20natural%20lighting?width=1344&height=768&model=flux-realism&enhance=true&nologo=true',
 		author: 'Colectiva Diversa MDP',
@@ -113,6 +115,7 @@ export const posts: Post[] = [
 		category: 'servicios',
 		title: 'Maquillaje inclusivo a domicilio',
 		subtitle: 'Skin prep, social y eventos. Tallas y estilos para todes',
+		description: 'Ofrecemos maquillaje profesional a domicilio, adaptado a todas las necesidades y estilos.',  
 		image:
 			'https://image.pollinations.ai/prompt/Makeup%20kit%20on%20table%2C%20inclusive%20beauty%20tones%2C%20soft%20pastel%20background%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20studio%20lighting?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Sofi Valdez',
@@ -135,7 +138,8 @@ export const posts: Post[] = [
 		id: 'prd-301',
 		category: 'productos',
 		title: 'Buzos oversize talles reales',
-		subtitle: 'Cortes sin género, talles reales, algodón frisa',
+    subtitle: 'Cortes sin género, talles reales, algodón frisa',
+    description: 'Buzos oversize con talles reales, perfectos para todas las ocasiones.',
 		image:
 			'https://image.pollinations.ai/prompt/Oversize%20hoodies%20on%20rack%2C%20genderless%20fashion%2C%20colorful%2C%20boutique%20vibe%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20soft%20lighting?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Todas Somos',
@@ -157,7 +161,8 @@ export const posts: Post[] = [
 		id: 'prd-315',
 		category: 'productos',
 		title: 'Trucadoras premium',
-		subtitle: 'Ropa interior especializada. Cómodas, discretas y de calidad',
+    subtitle: 'Ropa interior especializada. Cómodas, discretas y de calidad',
+    description: 'Trucadoras premium con talles reales, perfectas para todas las ocasiones.',
 		image:
 			'https://image.pollinations.ai/prompt/handmade%20intimate%20apparel%20sewing%20workshop%20fabric%20patterns%20measuring%20tape%20scissor%20professional%20tailoring%20studio%20soft%20lighting%20photorealistic?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Valentina Costura',
@@ -184,7 +189,8 @@ export const posts: Post[] = [
 		id: 'usd-210',
 		category: 'usados',
 		title: 'Notebook para estudiar',
-		subtitle: 'Anda bien, batería media. Ideal para tareas y navegar',
+    subtitle: 'Anda bien, batería media. Ideal para tareas y navegar',
+    description: 'Notebook usada, con pantalla y teclado funcionales.',
 		image:
 			'https://image.pollinations.ai/prompt/Used%20laptop%20on%20wooden%20table%2C%20clean%20but%20old%2C%20student%20setup%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20natural%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Kevin R.',
@@ -206,7 +212,8 @@ export const posts: Post[] = [
 		id: 'crs-501',
 		category: 'cursos',
 		title: 'Workshop de Vogue y expresión',
-		subtitle: 'Movimiento, historia y práctica abierta. Sin requisitos',
+    subtitle: 'Movimiento, historia y práctica abierta. Sin requisitos',
+    description: 'Workshop de Vogue y expresión, para todas las edades.',
 		image:
 			'https://image.pollinations.ai/prompt/Vogue%20dance%20workshop%20in%20studio%2C%20diverse%20group%2C%20energy%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20motion%20blur%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Casa Cultural Puerto',
@@ -230,7 +237,8 @@ export const posts: Post[] = [
 		id: 'req-901',
 		category: 'pedidos',
 		title: 'Busco costurera para ajustar binder',
-		subtitle: 'Trabajo prolijo, cómodo y discreto',
+    subtitle: 'Trabajo prolijo, cómodo y discreto',
+    description: 'Busco una costurera para ajustar binders, con experiencia y atención al detalle.',
 		image:
 			'https://image.pollinations.ai/prompt/Sewing%20workshop%20table%2C%20binder%20adjustments%2C%20threads%20and%20fabrics%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20soft%20lighting?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Alex M.',
@@ -252,7 +260,8 @@ export const posts: Post[] = [
 		id: 'srv-155',
 		category: 'servicios',
 		title: 'Peluquería segura para niñeces trans',
-		subtitle: 'Cortes y color con respeto y paciencia',
+    subtitle: 'Cortes y color con respeto y paciencia',
+    description: 'Peluquería segura para niñeces trans, con cortes y color profesionales.',
 		image:
 			'https://image.pollinations.ai/prompt/Inclusive%20hair%20salon%2C%20warm%20cozy%20interior%2C%20barber%20chair%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20soft%20lighting?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Maru Pelos',
@@ -275,7 +284,8 @@ export const posts: Post[] = [
 		id: 'prd-333',
 		category: 'productos',
 		title: 'Pastafrola y pepas caseras',
-		subtitle: 'Recetas de abuela, opción sin azúcar',
+    subtitle: 'Recetas de abuela, opción sin azúcar',
+    description: 'Pastafrola y pepas caseras, hechas con ingredientes frescos y de calidad.',
 		image:
 			'https://image.pollinations.ai/prompt/Homemade%20pastries%20and%20pastafrola%20on%20wooden%20table%2C%20home%20bakery%2C%20Mar%20del%20Plata%20Bat%C3%A1n%2C%20photorealistic%2C%20natural%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Abuela Dora',
@@ -298,7 +308,8 @@ export const posts: Post[] = [
 		id: 'usd-280',
 		category: 'usados',
 		title: 'Ropero de pino 2 puertas',
-		subtitle: 'Sano, solo marcas de uso',
+    subtitle: 'Sano, solo marcas de uso',
+    description: 'Ropero de pino, segunda mano, en buen estado, solo marcas de uso.',
 		image:
 			'https://image.pollinations.ai/prompt/Wooden%20wardrobe%20second%20hand%2C%20simple%20bedroom%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20natural%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Gabi T.',
@@ -319,7 +330,8 @@ export const posts: Post[] = [
 		id: 'crs-560',
 		category: 'cursos',
 		title: 'Programación web desde cero (online)',
-		subtitle: 'HTML, CSS y JavaScript con práctica guiada',
+    subtitle: 'HTML, CSS y JavaScript con práctica guiada',
+    description: 'Programación web desde cero, con HTML, CSS y JavaScript. Práctica guiada y en línea.',
 		image:
 			'https://image.pollinations.ai/prompt/Online%20coding%20course%20setup%2C%20laptop%20and%20notes%2C%20diverse%20students%2C%20photorealistic%2C%20soft%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Colectivo Tech MDP',
@@ -343,7 +355,8 @@ export const posts: Post[] = [
 		id: 'prd-420',
 		category: 'productos',
 		title: 'Celular Samsung A30 impecable',
-		subtitle: 'Anda joya, batería al 100% y memoria para mil fotos',
+    subtitle: 'Anda joya, batería al 100% y memoria para mil fotos',
+    description: 'Celular Samsung A30, segunda mano, en buen estado, con batería al 100% y memoria para mil fotos.',
 		image:
 			'https://image.pollinations.ai/prompt/Refurbished%20smartphone%20on%20desk%2C%20clean%20setup%2C%20photorealistic%2C%20soft%20lighting?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'El Tomi',
@@ -366,7 +379,8 @@ export const posts: Post[] = [
 		id: 'usd-295',
 		category: 'usados',
 		title: 'Bicicleta urbana usada',
-		subtitle: 'Rodado 28, lista para pedalear. Incluye luces',
+    subtitle: 'Rodado 28, lista para pedalear. Incluye luces',
+    description: 'Bicicleta urbana usada, segunda mano, en buen estado, con rodado 28 y luces incluidas.',
 		image:
 			'https://image.pollinations.ai/prompt/Used%20city%20bicycle%20leaning%20on%20wall%2C%20urban%20street%2C%20Mar%20del%20Plata%2C%20photorealistic%20daylight?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Nico V.',
@@ -388,7 +402,8 @@ export const posts: Post[] = [
 		id: 'crs-530',
 		category: 'cursos',
 		title: 'Clases de surf inclusivas',
-		subtitle: 'Equipo incluido. Acompañamiento respetuoso',
+    subtitle: 'Equipo incluido. Acompañamiento respetuoso',
+    description: 'Clases de surf inclusivas, con equipo incluido y acompañamiento respetuoso.',
 		image:
 			'https://image.pollinations.ai/prompt/Inclusive%20surf%20class%20at%20beach%2C%20Playa%20Grande%2C%20Mar%20del%20Plata%2C%20people%20with%20surfboards%2C%20photorealistic%2C%20golden%20hour?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Olas Para Todes',
@@ -412,7 +427,8 @@ export const posts: Post[] = [
 		id: 'evt-020',
 		category: 'eventos',
 		title: 'Encuentro de lectura queer',
-		subtitle: 'Rondas de lectura, mate y charla en espacio cuidado',
+    subtitle: 'Rondas de lectura, mate y charla en espacio cuidado',
+    description: 'Encuentro de lectura queer, con rondas de lectura, mate y charla en espacio cuidado.',
 		image:
 			'https://image.pollinations.ai/prompt/Queer%20reading%20circle%20in%20cozy%20library%2C%20small%20group%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20warm%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Biblioteca Parlante',
@@ -437,7 +453,8 @@ export const posts: Post[] = [
 		id: 'req-940',
 		category: 'pedidos',
 		title: 'Acompañamiento para trámite ANSES',
-		subtitle: 'Persona paciente para ir juntas al turno',
+    subtitle: 'Persona paciente para ir juntas al turno',
+    description: 'Acompañamiento para trámite ANSES, con persona paciente para ir juntas al turno.',
 		image:
 			'https://image.pollinations.ai/prompt/Assistance%20at%20public%20office%2C%20two%20people%20helping%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20daylight?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Marta L.',
@@ -459,7 +476,8 @@ export const posts: Post[] = [
 		id: 'srv-180',
 		category: 'servicios',
 		title: 'Albañilería y pequeñas mejoras',
-		subtitle: 'Arreglos chicos y mantenimiento con presupuesto justo',
+    subtitle: 'Arreglos chicos y mantenimiento con presupuesto justo',
+    description: 'Albañilería y pequeñas mejoras, con arreglos chicos y mantenimiento con presupuesto justo.',
 		image:
 			'https://image.pollinations.ai/prompt/Handyman%20doing%20home%20repairs%2C%20toolbox%2C%20apartment%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20natural%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Luis de Batán',
@@ -481,7 +499,8 @@ export const posts: Post[] = [
 		id: 'prd-360',
 		category: 'productos',
 		title: 'Huerta urbana para balcón',
-		subtitle: 'Kit de inicio con sustrato, semillas y guía',
+    subtitle: 'Kit de inicio con sustrato, semillas y guía',
+    description: 'Huerta urbana para balcón, con kit de inicio con sustrato, semillas y guía.',
 		image:
 			'https://image.pollinations.ai/prompt/Urban%20balcony%20garden%20kit%2C%20pots%20and%20green%20plants%2C%20Miramar%20near%20Mar%20del%20Plata%2C%20photorealistic%2C%20soft%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Verde Cerca',
@@ -504,7 +523,8 @@ export const posts: Post[] = [
 		id: 'evt-045',
 		category: 'eventos',
 		title: 'Tarde de juegos de mesa inclusivos',
-		subtitle: 'Aprendemos y jugamos en ronda. Traé mates',
+    subtitle: 'Aprendemos y jugamos en ronda. Traé mates',
+    description: 'Tarde de juegos de mesa inclusivos, con aprendizaje y juego en ronda.',
 		image:
 			'https://image.pollinations.ai/prompt/Board%20game%20afternoon%20in%20community%20center%2C%20diverse%20group%2C%20Mar%20del%20Plata%20Camet%2C%20photorealistic%2C%20warm%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Centro Cultural Vértice',
@@ -529,7 +549,8 @@ export const posts: Post[] = [
 		id: 'srv-220',
 		category: 'servicios',
 		title: 'Fotografía de producto accesible',
-		subtitle: 'Pack básico para emprendedoras y ferias',
+    subtitle: 'Pack básico para emprendedoras y ferias',
+    description: 'Fotografía de producto accesible, con pack básico para emprendedoras y ferias.',
 		image:
 			'https://image.pollinations.ai/prompt/Product%20photography%20setup%2C%20softbox%2C%20table%2C%20small%20business%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20studio%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Mica F.',
@@ -552,7 +573,8 @@ export const posts: Post[] = [
 		id: 'prd-390',
 		category: 'productos',
 		title: 'Accesorios artesanales queer friendly',
-		subtitle: 'Pins, parches y tote bags hechos a mano',
+    subtitle: 'Pins, parches y tote bags hechos a mano',
+    description: 'Accesorios artesanales queer friendly, con pins, parches y tote bags hechos a mano.',
 		image:
 			'https://image.pollinations.ai/prompt/Handmade%20pins%20and%20tote%20bags%20on%20table%2C%20queer%20friendly%20accessories%2C%20Mar%20del%20Plata%2C%20photorealistic%2C%20soft%20light?width=1200&height=800&model=flux-realism&enhance=true&nologo=true',
 		author: 'Punktura',
@@ -570,7 +592,8 @@ export const posts: Post[] = [
 		condition: 'nuevo',
 		stock: 25,
 		warranty: 'Cambios 7 días',
-	},
+  },
+ 
 ];
 
 export const categoryToGradientClass: Record<Category, string> = {

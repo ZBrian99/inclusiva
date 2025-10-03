@@ -15,7 +15,7 @@ export default function Header() {
 							<h1 className='font-display text-xl sm:text-2xl font-semibold bg-gradient-to-r from-white via-pink-100 to-violet-200 bg-clip-text text-transparent tracking-tight transition-all duration-300 group-hover:from-pink-200 group-hover:via-pink-300 group-hover:to-violet-500 '>
 								Inclusiva
 							</h1>
-							<span className='hidden us:inline-block text-xs sm:text-sm  text-muted-foreground group-hover:text-gray-300 transition-colors duration-300'>
+							<span className='hidden us:inline-block text-xs sm:text-sm  text-muted-foreground'>
 								Comunidad conectada
 							</span>
 						</div>

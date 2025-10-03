@@ -1,0 +1,128 @@
+// Prisma schema for Inclusiva backend
+// Datasource and generator
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums derived from validation schema
+enum Category {
+  eventos
+  servicios
+  productos
+  usados
+  cursos
+  pedidos
+}
+
+enum Mode {
+  presencial
+  online
+  hibrido
+}
+
+enum Level {
+  principiante
+  intermedio
+  avanzado
+}
+
+enum Condition {
+  nuevo
+  reacondicionado
+  usado
+}
+
+enum PaymentMethod {
+  cash
+  debit
+  credit
+  transfer
+  mercadopago
+  crypto
+  barter
+  all
+}
+
+enum PostStatus {
+  pending
+  approved
+  rejected
+}
+
+model Post {
+  id            String        @id @default(cuid())
+  category      Category
+  title         String
+  subtitle      String?
+  description   String
+  image         String
+  author        String
+  authorAvatar  String?
+  location      String
+  price         Int?
+  priceLabel    String?
+  rating        Float?
+  ratingCount   Int?
+  tags          String[]
+  urgent        Boolean       @default(false)
+  date          DateTime?
+  payment       PaymentMethod[]
+  barterAccepted Boolean      @default(false)
+
+  // Event-specific
+  startDate     DateTime?
+  endDate       DateTime?
+  venue         String?
+  mode          Mode?
+  capacity      Int?
+  organizer     String?
+
+  // Service-specific
+  experienceYears Int?
+  availability     String?
+  serviceArea      String?
+
+  // Product-specific
+  condition      Condition?
+  stock          Int?
+  warranty       String?
+
+  // Used-specific
+  usageTime      String?
+
+  // Course-specific
+  duration       String?
+  schedule       String?
+  level          Level?
+
+  // Request-specific
+  neededBy       String?
+  budgetRange    String?
+
+  status        PostStatus    @default(pending)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  // Relations
+  socials       SocialLink[]
+
+  @@index([category])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model SocialLink {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  name      String
+  url       String
+  createdAt DateTime @default(now())
+
+  @@index([postId])
+}

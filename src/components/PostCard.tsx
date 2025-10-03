@@ -1,17 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-	Category,
-	type Post,
-	type ProductPost,
-	type UsedPost,
-	type CoursePost,
-	type EventPost,
-	type ServicePost,
-	type RequestPost,
-	categoryToGradientClass,
-	categoryToTileClass,
-} from '@/data/posts';
+import type { PostInput } from '@/lib/validation/post';
+import { categoryOptions, paymentMethodOptions } from '@/lib/validation/post';
+import { categoryGradients } from '@/utils/categoryPatterns';
 import {
 	FaMapMarkerAlt,
 	FaStar,
@@ -55,7 +46,9 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 
 // Tipos básicos
-type PostCardProps = { post: Post };
+type Category = typeof categoryOptions[number];
+type PaymentMethod = typeof paymentMethodOptions[number];
+type PostCardProps = { post: PostInput };
 
 const categoryLabel: Record<Category, string> = {
 	eventos: 'Eventos',
@@ -115,7 +108,7 @@ function getTagClass(tag: string): string {
 }
 
 // Métodos de pago con colores unificados en gris
-const paymentMeta: Record<string, { icon: React.ElementType; className: string; label: string }> = {
+const paymentMeta: Record<PaymentMethod, { icon: React.ElementType; className: string; label: string }> = {
 	cash: {
 		icon: FaMoneyBill,
 		className: 'text-slate-400',
@@ -162,50 +155,50 @@ const categoryBadgeColors: Record<Category, string> = {
 
 // Info extra por categoría (icono + valor) tipado estricto
 type InfoItem = { key: string; icon: React.ElementType; value: string };
-function getExtraInfo(post: Post): InfoItem[] {
+function getExtraInfo(post: PostInput): InfoItem[] {
 	const items: InfoItem[] = [];
 
 	// Ubicación unificada como primer chip
 	if (post.location) items.push({ key: 'location', icon: FaMapMarkerAlt, value: post.location });
 
 	switch (post.category) {
-		case 'eventos': {
-			const p = post as EventPost;
+    case 'eventos': {
+            const p = post;
 			const date = formatDateTime(p.startDate);
 			if (date) items.push({ key: 'date', icon: FaCalendarAlt, value: date });
 			// venue removido para no duplicar ubicación
 			// capacity removido por ahora
 			break;
 		}
-		case 'servicios': {
-			const p = post as ServicePost;
+    case 'servicios': {
+            const p = post;
 			if (p.experienceYears != null) items.push({ key: 'exp', icon: FaMedal, value: `${p.experienceYears} años` });
 			if (p.availability) items.push({ key: 'avail', icon: FaClock, value: p.availability });
 			// serviceArea salta para unificar con location
 			break;
 		}
-		case 'productos': {
-			const p = post as ProductPost;
+    case 'productos': {
+            const p = post;
 			const cond = mapConditionLabel(p.condition);
 			if (cond) items.push({ key: 'cond', icon: FaTag, value: cond });
 			// stock y garantía removidos del chip
 			break;
 		}
-		case 'usados': {
-			const p = post as UsedPost;
+    case 'usados': {
+            const p = post;
 			if (p.usageTime) items.push({ key: 'usage', icon: FaHistory, value: p.usageTime });
 			items.push({ key: 'cond', icon: FaTag, value: 'usado' });
 			break;
 		}
-		case 'cursos': {
-			const p = post as CoursePost;
+    case 'cursos': {
+            const p = post;
 			if (p.duration) items.push({ key: 'dur', icon: FaClock, value: p.duration });
 			if (p.schedule) items.push({ key: 'sch', icon: FaClock, value: p.schedule });
 			if (p.level) items.push({ key: 'lvl', icon: FaSignal, value: p.level });
 			break;
 		}
-		case 'pedidos': {
-			const p = post as RequestPost;
+    case 'pedidos': {
+            const p = post;
 			if (p.neededBy) items.push({ key: 'need', icon: FaCalendarAlt, value: p.neededBy });
 			if (p.budgetRange) items.push({ key: 'budget', icon: FaMoneyBill, value: p.budgetRange });
 			break;
@@ -226,7 +219,7 @@ export default function PostCard({ post }: PostCardProps) {
 				<div className='pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/60 via-black/40 to-transparent' />
 				{/* Badge de categoría a la derecha con ícono */}
 				<div className='absolute right-3 top-3 flex items-center gap-2'>
-					<Badge className={`text-white rounded-full p-3.5 ${categoryToGradientClass[post.category]}`}>
+                    <Badge className={`text-white rounded-full p-3.5 ${categoryGradients[post.category]}`}>
 						{(() => {
 							const Icon = categoryIcon[post.category];
 							return <Icon className='mr-1' />;
@@ -241,11 +234,12 @@ export default function PostCard({ post }: PostCardProps) {
 							<span className='max-w-[140px] truncate inline-flex items-center text-xs font-medium text-white drop-shadow-[0_1px_1px_rgba(0,0,0,.6)] '>
 								{post.author}
 							</span>
-							{typeof post.rating === 'number' && post.rating > 0 && (
+							{/* {typeof post.rating === 'number' && post.rating > 0 && (
 								<span className='ml-2 inline-flex items-center gap-1 text-xs font-medium text-white drop-shadow-[0_1px_1px_rgba(0,0,0,.6)] '>
 									<FaStar className='text-yellow-400' /> {post.rating}
 								</span>
-							)}
+							)} */}
+              
 						</div>
 						<Avatar className='h-10 w-10 ring-1 ring-white/10 shadow-md'>
 							<AvatarImage src={post.authorAvatar} alt={post.author} />
@@ -255,12 +249,18 @@ export default function PostCard({ post }: PostCardProps) {
 				</div>
 			</div>
 
-			<div className={`${categoryToTileClass[post.category]} h-2 pointer-events-none`} />
+                {/* decorative strip removed to decouple from hardcoded data styles */}
 
 			<div className='p-4 h-full flex flex-col'>
-				{/* Jerarquía en slate: título > subtítulo */}
-				<h3 className='line-clamp-2 font-semibold text-slate-100 text-[15px] sm:text-base'>{post.title}</h3>
-				{post.subtitle && <p className='mt-1 line-clamp-2 text-[13px] text-slate-300'>{post.subtitle}</p>}
+		{/* Jerarquía en slate: título > subtítulo o descripción */}
+		<h3 className='line-clamp-2 font-semibold text-slate-100 text-[15px] sm:text-base'>{post.title}</h3>
+		{post.subtitle ? (
+			<p className='mt-1 line-clamp-2 text-[13px] text-slate-300'>{post.subtitle}</p>
+		) : (
+			post.description && (
+				<p className='mt-1 line-clamp-2 text-[13px] text-slate-300'>{post.description}</p>
+			)
+		)}
 
 				{/* Badges de información con colores por categoría */}
 				{extra.length > 0 && (
@@ -284,7 +284,7 @@ export default function PostCard({ post }: PostCardProps) {
 				{/* Precio + métodos de pago */}
 				<div className='mt-auto pt-3'>
 					<div className='flex items-center justify-between gap-2'>
-						<div className='min-w-0 text-base sm:text-lg text-slate-100'>
+						<div className='min-w-0 text-lg text-slate-100'>
 							{priceText && <span className='font-semibold'>{priceText}</span>}
 						</div>
 						<div className='flex items-center gap-2'>

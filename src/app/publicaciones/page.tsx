@@ -1,52 +1,53 @@
-'use client'
+'use client';
 
-import { useMemo, useState, useEffect } from 'react'
-import PostCard from '@/components/PostCard'
-import SearchFilters from '@/components/SearchFilters'
-import { posts as allPosts, Category } from '@/data/posts'
-import { useCategory } from '@/contexts/CategoryContext'
-
-type SortKey = 'recent' | 'rating' | 'priceAsc' | 'priceDesc'
+import { useState, useEffect } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
+import PostCard from '@/components/PostCard';
+import SearchFilters from '@/components/SearchFilters';
+import { useCategory } from '@/contexts/CategoryContext';
+import { Button } from '@/components/ui/button';
+import { usePostsQuery, type UiSortKey } from '@/hooks/usePosts';
+import type { ApiPost } from '@/types/api';
 
 export default function PostsListPage() {
-  const { selectedCategory, setSelectedCategory } = useCategory()
-  const [q, setQ] = useState('')
-  const [sort, setSort] = useState<SortKey>('recent')
+	const { selectedCategory, setSelectedCategory } = useCategory();
+	const [q, setQ] = useState('');
+	const [debouncedQ, setDebouncedQ] = useState('');
+	const [sort, setSort] = useState<UiSortKey>('recent');
+	const [page, setPage] = useState(1);
+	const pageSize = 24;
 
-  const posts = useMemo(() => {
-    let list = [...allPosts]
-    // filter by category
-    if (selectedCategory !== 'all') list = list.filter((p) => p.category === selectedCategory)
-    // search
-    const term = q.trim().toLowerCase()
-    if (term) {
-      list = list.filter((p) => {
-        const haystack = [p.title, p.subtitle ?? '', p.location, p.author, (p.tags ?? []).join(' ')].join(' ').toLowerCase()
-        return haystack.includes(term)
-      })
-    }
-    // sort
-    switch (sort) {
-      case 'rating':
-        list.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
-        break
-      case 'priceAsc':
-        list.sort((a, b) => (a.price ?? Number.MAX_SAFE_INTEGER) - (b.price ?? Number.MAX_SAFE_INTEGER))
-        break
-      case 'priceDesc':
-        list.sort((a, b) => (b.price ?? -1) - (a.price ?? -1))
-        break
-      default:
-        list.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    }
+	useEffect(() => {
+		const t = setTimeout(() => setDebouncedQ(q), 300);
+    window.scrollTo(0, 0);
+		return () => clearTimeout(t);
+	}, [q]);
 
-    return list
-  }, [selectedCategory, q, sort])
+	// Reset page to 1 when filters change
+	useEffect(() => {
+    setPage(1);
+    window.scrollTo(0, 0);
+	}, [selectedCategory, debouncedQ, sort]);
 
-  return (
+	const {
+		data: list,
+		isLoading,
+		isError,
+	} = usePostsQuery({
+		category: selectedCategory,
+		q: debouncedQ,
+		sort,
+		page,
+		pageSize,
+	});
+
+	const posts: ApiPost[] = list?.data ?? [];
+	const pagination = list?.pagination ?? { page: 1, totalPages: 1, total: 0, hasPrev: false, hasNext: false, pageSize };
+
+	return (
 		<>
 			{/* Hero Header con imagen de fondo */}
-			<section className='relative py-16 md:min-h-[40vh] flex items-center justify-center overflow-hidden'>
+			<section className='relative  py-16 md:min-h-[40vh] flex items-center justify-center overflow-hidden'>
 				{/* Imagen de fondo */}
 				<div className='absolute inset-0 hero-bg-abstract' />
 
@@ -66,7 +67,7 @@ export default function PostsListPage() {
 				</div>
 			</section>
 
-			<main className='mx-auto max-w-7xl px-4 sm:px-6 py-8 flex flex-col gap-6 sm:gap-8 h-full min-h-[calc(100svh-5rem)]'>
+			<main className='mx-auto max-w-7xl px-4 sm:px-6 pb-8 flex flex-col gap-6 sm:gap-8 h-full min-h-[calc(100svh-5rem)]'>
 				{/* Filtros de búsqueda */}
 				<SearchFilters
 					selected={selectedCategory}
@@ -75,15 +76,58 @@ export default function PostsListPage() {
 					onSearchQueryChange={setQ}
 					sortBy={sort}
 					onSortByChange={setSort}
-					resultsCount={posts.length}
+					resultsCount={pagination.total}
 				/>
 
 				{/* Grid de cards */}
-				<section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'>
-					{posts.map((p) => (
-						<PostCard key={p.id} post={p} />
-					))}
-				</section>
+				{isLoading && (
+					<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'>
+						{Array.from({ length: 6 }).map((_, i) => (
+							<div key={i} className='rounded-xl border p-4 bg-card'>
+								<div className='flex items-center gap-3 mb-4'>
+									<Skeleton className='h-10 w-10 rounded-full' />
+									<div className='flex-1'>
+										<Skeleton className='h-4 w-3/4 mb-2' />
+										<Skeleton className='h-3 w-1/2' />
+									</div>
+								</div>
+								<Skeleton className='h-40 w-full rounded-lg mb-4' />
+								<Skeleton className='h-4 w-full mb-2' />
+								<Skeleton className='h-4 w-5/6 mb-2' />
+								<Skeleton className='h-4 w-2/3' />
+							</div>
+						))}
+					</div>
+				)}
+				{isError && <div className='text-center text-destructive'>No se pudo cargar las publicaciones</div>}
+				{!isLoading && !isError && (
+					<>
+						<section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'>
+							{posts.map((p) => (
+								<PostCard key={p.id} post={p} />
+							))}
+						</section>
+
+						{/* Paginación */}
+						{pagination?.totalPages && pagination?.totalPages > 1 && (
+							<div className='flex items-center justify-start gap-2 mt-4 '>
+								<Button
+									variant='outline'
+									disabled={!pagination.hasPrev}
+									onClick={() => setPage((p) => Math.max(p - 1, 1))}
+								>
+									Anterior
+								</Button>
+								<span className='text-sm text-muted-foreground'>
+									Página {pagination.page} de {pagination.totalPages}
+								</span>
+								<Button variant='outline' disabled={!pagination.hasNext} onClick={() => setPage((p) => p + 1)}>
+									Siguiente
+								</Button>
+							</div>
+						)}
+					</>
+				)}
 			</main>
 		</>
 	);

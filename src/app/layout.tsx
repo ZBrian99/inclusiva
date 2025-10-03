@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingActionButton from '@/components/FloatingActionButton';
 import { CategoryProvider } from '@/contexts/CategoryContext';
+import { QueryProvider } from '@/providers/query';
 
 const poppins = Poppins({
 	weight: ['300', '400', '500', '600', '700'],
@@ -76,17 +77,19 @@ export default function RootLayout({
 				<meta name='apple-mobile-web-app-status-bar-style' content='black' />
 				<meta name='apple-mobile-web-app-title' content='Inclusiva' />
 			</head>
-			<body className={`${inter.variable} ${poppins.variable}`}>
-				<CategoryProvider>
-					<TooltipProvider delayDuration={200}>
-						<Header />
-						<div className='mt-20 '>{children}</div>
-						<FloatingActionButton />
-						<Footer />
-					</TooltipProvider>
-					<Toaster theme='dark' />
-				</CategoryProvider>
-			</body>
-		</html>
-	);
+            <body className={`${inter.variable} ${poppins.variable}`}>
+                <QueryProvider>
+                    <CategoryProvider>
+                        <TooltipProvider delayDuration={200}>
+                            <Header />
+                            <div className='mt-20 '>{children}</div>
+                            <FloatingActionButton />
+                            <Footer />
+                        </TooltipProvider>
+                        <Toaster theme='dark' />
+                    </CategoryProvider>
+                </QueryProvider>
+            </body>
+        </html>
+    );
 }
