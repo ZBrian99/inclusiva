@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import type { Prisma } from '@prisma/client'
 import { requireAdmin } from '@/lib/auth'
 import { posts } from '@/data/posts'
 import { parseISO, isValid } from 'date-fns'
@@ -156,7 +157,7 @@ export async function POST(req: NextRequest) {
     ])
 
     // create socials after inserting posts
-    const inserted = await prisma.post.findMany({ select: { id: true, title: true } })
+    const inserted: Prisma.PostGetPayload<{ select: { id: true; title: true } }>[] = await prisma.post.findMany({ select: { id: true, title: true } })
     for (const p of posts) {
       const created = inserted.find(i => i.title === p.title)
       if (!created) continue
